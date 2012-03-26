@@ -1,0 +1,6 @@
+
+import FileMoverTests
+import MusicCollectionOrganizerConfigurationManagerTests
+import MusicFilePropertiesTests
+import CoverDownloadersTests
+import ArchiveInformationRetrieversTests
