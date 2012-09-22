@@ -18,8 +18,10 @@ class MusicCollectionOrganizer(FileCollectionOrganizer):
     def DownloadCovers(self, similarElements, elementsProperties, similarElementsDirectory):
         if similarElements:
             element = elementsProperties[similarElements[0]]
-            artist, album = element.artist, element.album
+            artist, album = element.artist.encode('utf-8'), element.album.encode('utf-8')
+            
             print "Getting album cover for %(artist)s - %(album)s" % locals()
+            
             for coverDownloader in self.__coverDownloaders:
                 try:
                     coverDownloader.DownloadCoverFor(artist, album, similarElementsDirectory)

@@ -28,31 +28,17 @@ class AllArchivesInformationRetriever(object):
                     continue
 
             self.__failedToOpen.append(archivePath)
-            print "%(archivePath)s is password protected"
+            print "%(archivePath)s is password protected" % locals()
             return False
 
         except:
             self.__failedToOpen.append(archivePath)
-            print "%(archivePath)s could not be opened"
+            print "%(archivePath)s could not be opened" % locals()
             return False
     
     def __GetAppropriateInfoRetriever(self, archivePath):
         extension = archivePath.split(".")[-1]
         return self.__infoRetrievers[extension]
-    
-    def ContainsMusic(self, archivePath):
-        infoRetriever = self.__GetAppropriateInfoRetriever(archivePath)
-        try:
-            return infoRetriever.ContainsMusic(archivePath)
-        except ArchiveIncorrectPasswordException:
-            for password in self.__possiblePasswords:
-                try:
-                    return infoRetriever.ContainsMusic(archivePath, password)
-                except:
-                    continue
-
-            print "%(archivePath)s is password protected"
-            return False
 
     def GetListOfFiles(self, archivePath):
         infoRetriever = self.__GetAppropriateInfoRetriever(archivePath)
@@ -65,7 +51,7 @@ class AllArchivesInformationRetriever(object):
                 except:
                     continue
 
-            print "%(archivePath)s is password protected"
+            print "%(archivePath)s is password protected" % locals()
             return False
 
 

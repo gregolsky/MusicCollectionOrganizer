@@ -31,9 +31,8 @@ class MusicFilePropertiesExtractor(FilePropertiesExtractor):
                                     date= tagInfo.Year,
                                     tracknumber= tagInfo.TrackNumber)
         except tagException.MissingTagInfoException as exc:
-            try:
+            if file in self.__archivesListOfFiles:
                 self.__keepArchivesList.append(self.__archivesListOfFiles[file])
-            except:
-                print file, 'not in any archive'
+
             print str(exc)
         

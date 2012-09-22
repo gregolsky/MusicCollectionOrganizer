@@ -21,7 +21,7 @@ class CoverDownloader(object):
     @staticmethod
     def IsAlbumNameSimilar(albumName, webAlbumName):
         if albumName and webAlbumName:
-            webAlbumNameWords = webAlbumName.lower().split()
+            webAlbumNameWords = [ n.encode('utf-8') for n in webAlbumName.lower().split() ]
             albumNameWords = albumName.lower().split()
             subLenAlbumNames = int(math.fabs(len(albumNameWords) - len(webAlbumNameWords)))
             return sum([ 1 for word in albumNameWords if word in webAlbumNameWords ]) >= 1 and subLenAlbumNames <= 2

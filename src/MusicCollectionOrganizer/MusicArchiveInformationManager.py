@@ -23,3 +23,9 @@ class MusicArchivesInformationManager(object):
             for path, flist in musicArchives.iteritems():
                 results[path] = [ os.path.join(sys.argv[1], fpath[1:] if fpath[0] == "*" else fpath ) for fpath in flist  ]
         return results
+
+
+
+
+
+
