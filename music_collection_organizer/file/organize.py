@@ -1,10 +1,23 @@
 import os.path
+import file.utils
 
-__author__="gregorl"
-__date__ ="$2010-08-20 16:06:04$"
 
-import os
-from FileMover import FileMover
+class FileCollectionScanner(object):
+
+    def __init__(self):
+        pass
+
+    def GetCollectionFromPath(self, path):
+        return self.GetCollectionFromDirectory(path)
+
+    def GetCollectionFromDirectory(self, directory):
+        collection = []
+        for dirpath, dirnames, filenames in os.walk(directory):
+            for fname in filenames:
+                collection.append(os.path.join(dirpath, fname))
+
+        return collection
+
 
 class FileCollectionOrganizer(object):
 
@@ -40,7 +53,7 @@ class FileCollectionOrganizer(object):
                     similarElementsDirectory = os.path.join(*formattedDirectoriesNames)
                     if not os.path.exists(similarElementsDirectory):
                         os.makedirs(similarElementsDirectory)
-                    FileMover.MoveFile(file=chosenElement, destination=os.path.join(similarElementsDirectory, self.__collectionPropertiesFormats[-1] % locals() + '.' + chosenElement.split('.')[-1]))
+                    file.utils.FileMover.MoveFile(file=chosenElement, destination=os.path.join(similarElementsDirectory, self.__collectionPropertiesFormats[-1] % locals() + '.' + chosenElement.split('.')[-1]))
                     organized.append(chosenElement)
 
                 self.__ApplyActionsOnSimilarElements(similarElements, elementsProperties, similarElementsDirectory)

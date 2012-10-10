@@ -5,7 +5,7 @@ __author__="gregorl"
 __date__ ="$2010-08-28 15:34:11$"
 
 import unittest
-from MusicCollectionOrganizer.MusicFileProperties import MusicFileProperties
+from music.metadata import MusicFileProperties
 
 class MusicFilePropertiesTests(unittest.TestCase):
 

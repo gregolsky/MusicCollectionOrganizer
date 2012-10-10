@@ -1,3 +1,0 @@
-
-class MissingTagInfoException(Exception):
-	pass

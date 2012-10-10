@@ -1,0 +1,20 @@
+€}q(U/usr/lib/python2.7/re.py}qUsearchqcrope.base.oi.memorydb
+ScopeInfo
+q)q}qUbuiltinUstr†qUnoneq…q	h	‡Uunknown…q
+s}q†bsUfile/organize.pyq}qUFileCollectionScanner.__init__h)q}qUinstanceqUdefinedqUmusic/organize.pyqUMusicCollectionScannerq‡†…h
+s}q†bsUfile/metadata.pyq}qUFileProperties.__init__h)q}qhhUmusic/metadata.pyqUMusicFilePropertiesq‡†h	†h
+s}q†bsh}q(U)ConfigurationManager.GetLastFmCredentialsh)q}qhhhUConfigurationManagerq‡†…(Ubuiltinq Utupleq!Uunknown…q"h"ts}q#†bU!MusicCollectionOrganizer.__init__h)q$}q%(hhhUMusicCollectionOrganizerq&‡†h"hhUmusic/metadata.pyq'UMusicFilePropertiesExtractorq(‡†h Ulistq)hhUmusic/cover.pyq*UAlbumArtOrgCoverDownloaderq+‡†‡th
+s}q,†bU3ConfigurationManager.GetCollectionPropertiesFormatsh)q-}q.hhhh‡†…h
+s}q/†bU)ConfigurationManager.GetPossiblePasswordsh)q0}q1hhhh‡†…h
+s}q2†buh*}q3ULastFmCoverDownloader.__init__h)q4}q5hhh*ULastFmCoverDownloaderq6‡†(h h!h"h"t†h
+s}q7†bsU&/usr/share/pyshared/mutagen/easyid3.py}q8UEasyID3.__init__h)q9}q:hhU&/usr/share/pyshared/mutagen/easyid3.pyUEasyID3q;‡†h"†h
+s}q<†bsUframework.pyq=}q>UConfigurationManager.GetValueh)q?}q@hhhh‡†hh‡h
+s}qA†bsUmusic/archive.pyqB}qC(U!ExtractedArchivesCleaner.__init__h)qD}qEhhhBUExtractedArchivesCleanerqF‡†hhhBUAllArchivesInformationRetrieverqG‡††h
+s}qH†bU(AllArchivesInformationRetriever.__init__h)qI}qJhhhBhG‡†h"h h)h	‡‡h
+s}qK†bU(MusicArchivesInformationManager.__init__h)qL}qMhhhBUMusicArchivesInformationManagerqN‡†hhhBhG‡††h
+s}qO†bUAllArchivesExtractor.__init__h)qP}qQhhhBUAllArchivesExtractorqR‡†h"h h)h	‡‡h
+s}qS†buh'}qT(U%MusicFilePropertiesExtractor.__init__h)qU}qVhhh'h(‡†hhh'UMusicMetadataProviderqW‡†h h)h	‡‡h
+s}qX†bUMetaData.__init__h)qY}qZ(hhhUMetaDataq[‡†hhhhh"th
+s}q\†bUMusicMetadataProvider.__init__h)q]}q^hhh'hW‡†hhh'UUnpleasantCharactersCutterq_‡††h
+s}q`†bU2UnpleasantCharactersCutter.cutUnpleasantCharactersh)qa}qb(hhhh_‡†h	†hhhhh_‡†h†h
+u}qc†buu.

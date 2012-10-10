@@ -1,10 +1,3 @@
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-
-__author__="gregorl"
-__date__ ="$2010-08-20 17:56:34$"
-
-from FileProperties import FilePropertyFormat
 
 class FileCollectionPropertiesFormatParser(object):
 
@@ -29,3 +22,15 @@ class FileCollectionPropertiesFormatParser(object):
 
             result[index] = FilePropertyFormat(properties=tuple(properties), format=format)
 
+class FilePropertiesExtractor(object):
+
+    def extractPropertiesOf(self, file):
+        return None
+
+class FileProperties(object):
+
+    def __init__(self, **kwargs):
+        self.__dict__ = kwargs
+
+    def IsSimilar(self, other):
+        pass

@@ -1,11 +1,19 @@
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-
-__author__="gregorl"
-__date__ ="$2010-08-29 17:23:30$"
-
 import logging
 import sys
+
+
+def Log(func):
+    """Wraps a method so that any calls made to print get logged instead"""
+    def pwrapper(*arg):
+        stdobak = sys.stdout
+        lpinstance = logging.LogPrinter()
+        sys.stdout = lpinstance
+        try:
+            return func(*arg)
+        finally:
+            sys.stdout = stdobak
+    return pwrapper
+
 
 class LogPrinter:
     """LogPrinter class which serves to emulates a file object and logs
@@ -20,15 +28,3 @@ class LogPrinter:
     def write(self, text):
         """Logs written output to a specific logger"""
         self.ilogger.info(text)
-
-def Log(func):
-    """Wraps a method so that any calls made to print get logged instead"""
-    def pwrapper(*arg):
-        stdobak = sys.stdout
-        lpinstance = LogPrinter()
-        sys.stdout = lpinstance
-        try:
-            return func(*arg)
-        finally:
-            sys.stdout = stdobak
-    return pwrapper

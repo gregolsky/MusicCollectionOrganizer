@@ -1,17 +1,14 @@
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
+class DataTransferObject(object):
 
-__author__="gregorl"
-__date__ ="$2010-08-29 17:32:53$"
-
+    def __init__(self, **kwargs):
+        self.__dict__ = kwargs
+class AlbumCoverNotFoundException(Exception):
+    pass
 class MusicCollectionOrganizerException(Exception):
     pass
 
 class MissingTagInfoException(MusicCollectionOrganizerException):
-    pass
+	pass
 
 class ArchiveIncorrectPasswordException(MusicCollectionOrganizerException):
-    pass
-
-class AlbumCoverNotFoundException(Exception):
     pass

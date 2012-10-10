@@ -1,11 +1,5 @@
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-
-__author__="gregorl"
-__date__ ="$2010-08-28 09:30:32$"
-
 import shutil
-import os
+
 
 class FileMover(object):
 
@@ -18,4 +12,3 @@ class FileMover(object):
             return;
         else:
             shutil.move(file, destination)
-

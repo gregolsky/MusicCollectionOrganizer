@@ -1,6 +1,6 @@
 
 import unittest
-from MusicCollectionOrganizer.ArchiveInformationRetrievers import *
+from music.archive import *
 
 class  ArchiveInformationRetrieversTests(unittest.TestCase):
     def setUp(self):

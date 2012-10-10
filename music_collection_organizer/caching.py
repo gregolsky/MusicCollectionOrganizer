@@ -1,10 +1,5 @@
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-
-__author__="gregorl"
-__date__ ="$2010-08-29 21:29:25$"
-
 import functools
+
 
 class Memoized(object):
     """Decorator that caches a function's return value each time it is called.

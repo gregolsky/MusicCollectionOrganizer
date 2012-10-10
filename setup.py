@@ -11,8 +11,8 @@ setup(name='MusicCollectionOrganizer',
       author_email='grzgrzlac@gmail.com',
       url='https://launchpad.net/musiccollectionorganizer',
       requires=['mutagen', 'pylast', 'UnRAR2', 'lxml'],
-      package_dir={'':'src', 'tests':'tests'},
-      packages=['ApplicationAbstractions', 'FileCollectionOrganizer', 'MusicCollectionOrganizer', 'TagInfoProvider'],
+      package_dir={'':'music_collection_organizer', 'tests':'tests'},
+      packages=['file', 'music', '.'],
       test_suite='tests',
       scripts=['src/musicCollectionOrganizer']
      )

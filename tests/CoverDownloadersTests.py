@@ -5,7 +5,7 @@ __author__="gregorl"
 __date__ ="$2010-09-01 18:25:06$"
 
 import unittest
-from MusicCollectionOrganizer.CoverDownloaders import *
+from music.cover import *
 
 class CoverDownloadersTests(unittest.TestCase):
 

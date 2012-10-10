@@ -5,7 +5,7 @@ __author__="gregorl"
 __date__ ="$2010-08-28 13:15:48$"
 
 import unittest
-from MusicCollectionOrganizer.ConfigurationManager import ConfigurationManager
+from music.organize import ConfigurationManager
 
 class MusicCollectionOrganizerConfigurationManagerTests(unittest.TestCase):
 

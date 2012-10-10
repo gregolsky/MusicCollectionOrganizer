@@ -7,7 +7,7 @@ __date__ ="$2010-08-28 12:55:04$"
 import unittest
 import os
 import shutil
-from FileCollectionOrganizer.FileMover import FileMover
+from file.utils import FileMover
 
 class FileMoverTests(unittest.TestCase):
 

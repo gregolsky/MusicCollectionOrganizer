@@ -1,17 +1,13 @@
-
-__author__="gregorl"
-__date__ ="$2010-08-31 07:24:46$"
-
-import pylast
-import urllib
-import os
-import sgmllib
-import urllib2
-from lxml.html import fromstring
 import math
+import os
+import urllib
+import pylast
+import urllib2
+import sgmllib
+from lxml.html import fromstring
+import music.common
 
-from ApplicationAbstractions.Dto import DataTransferObject
-from Exceptions import AlbumCoverNotFoundException
+#from .common import DataTransferObject
 
 class CoverDownloader(object):
 
@@ -27,47 +23,6 @@ class CoverDownloader(object):
             return sum([ 1 for word in albumNameWords if word in webAlbumNameWords ]) >= 1 and subLenAlbumNames <= 2
         
         return False
-
-class LastFmCoverDownloader(CoverDownloader):
-
-    API_KEY = "c24c87da37668d0147a16e2e44bba24a"
-    API_SECRET = "77df19816a250e40d0d78fcb870318a9"
-
-    def __init__(self, lastfmCredentials):
-        username, password = lastfmCredentials
-        self.__network = self.__ConnectToLastFm(username, password)
-
-    def DownloadCoverFor(self, artist, album, destination):
-        try:
-            albums = [ topalbum[0].get_cover_image() for topalbum in self.__network.get_artist(artist).get_top_albums() if CoverDownloader.IsAlbumNameSimilar(album, topalbum[0].get_title()) ]
-            if albums:
-                urllib.urlretrieve(albums[0], os.path.join(destination,'folder.' + albums[0].split('/')[-1].split('.')[-1]))
-        except:
-            raise AlbumCoverNotFoundException("No album cover on Last.Fm for %(artist)s - %(album)s" % locals())
-
-    def __ConnectToLastFm(self, username, password):
-        return pylast.get_lastfm_network(api_key = self.API_KEY, api_secret = self.API_SECRET, username = username, password_hash = password)
-
-class AlbumArtOrgCoverDownloader(CoverDownloader):
-
-    Url = 'http://www.albumart.org/index.php'
-
-    def DownloadCoverFor(self, artist, album, destination):
-
-        data = {}
-        data["srchkey"] = "%(artist)s %(album)s" % locals()
-        data["itempage"] = 1
-        data["newsearch"] = 1
-        data["searchindex"] = "Music"
-
-        try:
-            sock = urllib2.urlopen(self.Url+"?"+urllib.urlencode(data))
-            content = sock.read()
-            anchors = fromstring(content).cssselect("a.thickbox")
-            link = anchors[0].get('href')
-            urllib.urlretrieve(link, os.path.join(destination, 'folder.' + link.split('/')[-1].split('.')[-1]))
-        except:
-            raise AlbumCoverNotFoundException("No album cover on AlbumArt.org for %(artist)s - %(album)s" % locals())
 
 class RateYourMusicCoverDownloader(object):
 
@@ -91,7 +46,7 @@ class RateYourMusicCoverDownloader(object):
 
     class RateYourMusicArtistPageHtmlParser(sgmllib.SGMLParser):
 
-        class Anchor(DataTransferObject):
+        class Anchor(music.common.DataTransferObject):
             pass
 
         def __init__(self):
@@ -128,4 +83,47 @@ class RateYourMusicCoverDownloader(object):
         def GetAnchors(self):
             print self.__anchors
             return self.__anchors
+
+
+class AlbumArtOrgCoverDownloader(CoverDownloader):
+
+    Url = 'http://www.albumart.org/index.php'
+
+    def DownloadCoverFor(self, artist, album, destination):
+
+        data = {}
+        data["srchkey"] = "%(artist)s %(album)s" % locals()
+        data["itempage"] = 1
+        data["newsearch"] = 1
+        data["searchindex"] = "Music"
+
+        try:
+            sock = urllib2.urlopen(self.Url+"?"+urllib.urlencode(data))
+            content = sock.read()
+            anchors = fromstring(content).cssselect("a.thickbox")
+            link = anchors[0].get('href')
+            urllib.urlretrieve(link, os.path.join(destination, 'folder.' + link.split('/')[-1].split('.')[-1]))
+        except:
+            raise music.common.AlbumCoverNotFoundException("No album cover on AlbumArt.org for %(artist)s - %(album)s" % locals())
+
+
+class LastFmCoverDownloader(CoverDownloader):
+
+    API_KEY = "c24c87da37668d0147a16e2e44bba24a"
+    API_SECRET = "77df19816a250e40d0d78fcb870318a9"
+
+    def __init__(self, lastfmCredentials):
+        username, password = lastfmCredentials
+        self.__network = self.__ConnectToLastFm(username, password)
+
+    def DownloadCoverFor(self, artist, album, destination):
+        try:
+            albums = [ topalbum[0].get_cover_image() for topalbum in self.__network.get_artist(artist).get_top_albums() if CoverDownloader.IsAlbumNameSimilar(album, topalbum[0].get_title()) ]
+            if albums:
+                urllib.urlretrieve(albums[0], os.path.join(destination,'folder.' + albums[0].split('/')[-1].split('.')[-1]))
+        except:
+            raise music.common.AlbumCoverNotFoundException("No album cover on Last.Fm for %(artist)s - %(album)s" % locals())
+
+    def __ConnectToLastFm(self, username, password):
+        return pylast.get_lastfm_network(api_key = self.API_KEY, api_secret = self.API_SECRET, username = username, password_hash = password)
 
